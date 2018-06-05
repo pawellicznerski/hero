@@ -1,0 +1,15 @@
+<p>
+  {{title}}
+</p>
+
+<hero-detail [hero]="selectedHero"></hero-detail>
+
+<ul>
+  <li *ngFor="let hero of heroes"
+      (click)='onSelect(hero)'
+  >
+    <span>{{hero.name}}</span>
+  </li>
+</ul>
+
+<message></message>
