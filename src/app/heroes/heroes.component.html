@@ -1,11 +1,18 @@
 <p>
   {{title}}
 </p>
+<div>
+  <label>Add new Hero:
+    <input #heroName/>
+  </label>
+  <button (click)="add(heroName.value); heroName.value=''">ADD</button>
+</div>
 
 <ul>
   <li *ngFor="let hero of heroes"
       (click)='onSelect(hero)'
   >
     <a routerLink='/detail/{{hero.id}}'>Name: {{hero.name}}</a>
+    <button (click)='removeHero(hero.id)'>x</button>
   </li>
 </ul>

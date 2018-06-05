@@ -14,17 +14,24 @@ export class HeroesComponent implements OnInit {
     private heroService: HeroService
   ) { }
 
-
   heroes: Hero[];
   selectedHero: Hero;
-  // hero: Hero={
-  //   name:"John",
-  //   id:1
-  // };
-  // console.log(HEROES)
+
   getHeroes(): void{
     this.heroService.getHeroes()
     .subscribe(heroes=> this.heroes=heroes)
+  }
+
+  add(name: string): void{
+    name= name.trim();
+    if(!name){return;}
+    this.heroService.addHero({name}as Hero)
+    .subscribe(hero=> this.heroes.push(hero))
+  }
+
+  removeHero(id: number): void{
+    this.heroes=this.heroes.filter((h)=>h.id!==id);
+    this.heroService.deleteHero(id).subscribe()
   }
 
   ngOnInit() {
