@@ -30,7 +30,7 @@ export class HeroesComponent implements OnInit {
   ngOnInit() {
     this.getHeroes();
   }
-  title="moja apka"
+  title="Heroes app"
 
   onSelect(hero: Hero): void{
     this.selectedHero = hero;

@@ -15,8 +15,8 @@ export class MessageService {
     this.messages.push(message);
   }
 
-  clear(): void{
-    this.messages = [];
+  clear(message): void{
+    this.messages = this.messages.filter((m)=>m!==message)
   }
 
 }

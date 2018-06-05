@@ -2,14 +2,10 @@
   {{title}}
 </p>
 
-<hero-detail [hero]="selectedHero"></hero-detail>
-
 <ul>
   <li *ngFor="let hero of heroes"
       (click)='onSelect(hero)'
   >
-    <span>{{hero.name}}</span>
+    <a routerLink='/detail/{{hero.id}}'>Name: {{hero.name}}</a>
   </li>
 </ul>
-
-<message></message>
