@@ -7,7 +7,9 @@ import { HEROES } from './mock-heroes';
 import { Observable, of } from 'rxjs';
 import { catchError,map,tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
+
 @Injectable({ providedIn: 'root' })
+
 export class HeroService {
 
   constructor(
@@ -54,6 +56,14 @@ export class HeroService {
     return this.http.delete<Hero>(url,this.httpOptions).pipe(
       tap(_=>this.log("i wpadł w piz..")),
       catchError(this.handleErrors<Hero>("delete Hero"))
+    )
+  }
+
+  searchHeroes(term: string): Observable<Hero[]>{
+    if (!term.trim()) { return of([]); }
+    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
+      tap(_=>this.log("jeeest mamy go")),
+      catchError(this.handleErrors<Hero[]>("searchHero"))
     )
   }
 

@@ -16,7 +16,8 @@ export class MessageService {
   }
 
   clear(message): void{
-    this.messages = this.messages.filter((m)=>m!==message)
+    const i=this.messages.indexOf(message);
+    this.messages.splice(i,1)
   }
 
 }
